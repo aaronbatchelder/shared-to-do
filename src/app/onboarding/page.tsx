@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Logo } from '@/components/logo'
 import { createClient } from '@/lib/supabase/client'
 
 export default function OnboardingPage() {
@@ -70,10 +71,8 @@ export default function OnboardingPage() {
     <div className="min-h-screen flex items-center justify-center bg-[#FFFBF7] px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full gradient-warm mb-4">
-            <span className="text-3xl">🏠</span>
-          </div>
-          <h1 className="text-3xl font-bold text-[#2D2A26]">Welcome to Sunday Run!</h1>
+          <Logo size="lg" className="mb-4" />
+          <h1 className="text-2xl font-bold text-[#2D2A26] mt-4">Welcome!</h1>
           <p className="text-[#8B8680] mt-2">Let&apos;s set up your household</p>
         </div>
 

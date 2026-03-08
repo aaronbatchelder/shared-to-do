@@ -3,6 +3,7 @@
 import { SignUp } from '@clerk/nextjs'
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
+import { Logo } from '@/components/logo'
 
 function SignUpContent() {
   const searchParams = useSearchParams()
@@ -12,10 +13,7 @@ function SignUpContent() {
     <div className="min-h-screen flex items-center justify-center bg-[#FFFBF7] px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full gradient-warm mb-4">
-            <span className="text-2xl">🌅</span>
-          </div>
-          <h1 className="text-3xl font-bold text-[#F97066]">Sunday Run</h1>
+          <Logo size="lg" className="mb-4" />
           <p className="text-[#8B8680] mt-2">Your weekly grocery ritual</p>
           {inviteCode && (
             <div className="mt-4 p-3 bg-[#FEE4D6] border border-[#FEC6A1] rounded-xl">
