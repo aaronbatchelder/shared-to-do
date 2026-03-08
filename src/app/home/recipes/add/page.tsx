@@ -149,8 +149,8 @@ export default function AddRecipePage() {
 
   if (!method) {
     return (
-      <div className="flex flex-col h-screen bg-zinc-50">
-        <header className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 flex items-center gap-3 shadow-sm">
+      <div className="flex flex-col h-screen bg-[#FFFBF7]">
+        <header className="gradient-warm text-white px-6 py-4 flex items-center gap-3 shadow-lg">
           <Link href="/home/recipes" className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
             <ArrowLeftIcon className="w-5 h-5" />
           </Link>
@@ -158,45 +158,45 @@ export default function AddRecipePage() {
         </header>
 
         <main className="flex-1 p-6">
-          <p className="text-zinc-500 text-sm mb-6">How would you like to add a recipe?</p>
+          <p className="text-[#8B8680] text-sm mb-6">How would you like to add a recipe?</p>
 
           <div className="space-y-3 max-w-md">
             <button
               onClick={() => setMethod('url')}
-              className="w-full p-4 bg-white border border-zinc-200 rounded-xl flex items-center gap-4 hover:border-emerald-400 hover:shadow-sm transition-all"
+              className="w-full p-4 bg-white border border-[#FEE4D6] rounded-xl flex items-center gap-4 hover:border-[#F97066] hover:shadow-sm transition-all"
             >
-              <div className="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center">
-                <LinkIcon className="w-5 h-5 text-emerald-600" />
+              <div className="w-11 h-11 bg-[#FEE4D6] rounded-xl flex items-center justify-center">
+                <LinkIcon className="w-5 h-5 text-[#F97066]" />
               </div>
               <div className="text-left">
-                <p className="font-medium text-zinc-900 text-sm">From URL</p>
-                <p className="text-xs text-zinc-500">Paste a recipe link</p>
+                <p className="font-medium text-[#2D2A26] text-sm">From URL</p>
+                <p className="text-xs text-[#8B8680]">Paste a recipe link</p>
               </div>
             </button>
 
             <button
               onClick={() => setMethod('photo')}
-              className="w-full p-4 bg-white border border-zinc-200 rounded-xl flex items-center gap-4 hover:border-emerald-400 hover:shadow-sm transition-all"
+              className="w-full p-4 bg-white border border-[#FEE4D6] rounded-xl flex items-center gap-4 hover:border-[#F97066] hover:shadow-sm transition-all"
             >
-              <div className="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center">
-                <CameraIcon className="w-5 h-5 text-emerald-600" />
+              <div className="w-11 h-11 bg-[#FEE4D6] rounded-xl flex items-center justify-center">
+                <CameraIcon className="w-5 h-5 text-[#F97066]" />
               </div>
               <div className="text-left">
-                <p className="font-medium text-zinc-900 text-sm">From Photo</p>
-                <p className="text-xs text-zinc-500">Snap a cookbook page</p>
+                <p className="font-medium text-[#2D2A26] text-sm">From Photo</p>
+                <p className="text-xs text-[#8B8680]">Snap a cookbook page</p>
               </div>
             </button>
 
             <button
               onClick={() => setMethod('manual')}
-              className="w-full p-4 bg-white border border-zinc-200 rounded-xl flex items-center gap-4 hover:border-emerald-400 hover:shadow-sm transition-all"
+              className="w-full p-4 bg-white border border-[#FEE4D6] rounded-xl flex items-center gap-4 hover:border-[#F97066] hover:shadow-sm transition-all"
             >
-              <div className="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center">
-                <PencilIcon className="w-5 h-5 text-emerald-600" />
+              <div className="w-11 h-11 bg-[#FEE4D6] rounded-xl flex items-center justify-center">
+                <PencilIcon className="w-5 h-5 text-[#F97066]" />
               </div>
               <div className="text-left">
-                <p className="font-medium text-zinc-900 text-sm">Manual Entry</p>
-                <p className="text-xs text-zinc-500">Type it yourself</p>
+                <p className="font-medium text-[#2D2A26] text-sm">Manual Entry</p>
+                <p className="text-xs text-[#8B8680]">Type it yourself</p>
               </div>
             </button>
           </div>
@@ -207,8 +207,8 @@ export default function AddRecipePage() {
 
   if (method === 'url' && !title) {
     return (
-      <div className="flex flex-col h-screen bg-zinc-50">
-        <header className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 flex items-center gap-3 shadow-sm">
+      <div className="flex flex-col h-screen bg-[#FFFBF7]">
+        <header className="gradient-warm text-white px-6 py-4 flex items-center gap-3 shadow-lg">
           <button onClick={() => setMethod(null)} className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
             <ArrowLeftIcon className="w-5 h-5" />
           </button>
@@ -218,14 +218,14 @@ export default function AddRecipePage() {
         <main className="flex-1 p-6">
           <div className="space-y-4 max-w-md">
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-2">
+              <label className="block text-sm font-medium text-[#4A4640] mb-2">
                 Recipe URL
               </label>
               <Input
                 placeholder="https://example.com/recipe"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-zinc-900 placeholder:text-zinc-400"
+                className="w-full px-4 py-3 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26] placeholder:text-[#8B8680]"
               />
             </div>
 
@@ -238,7 +238,7 @@ export default function AddRecipePage() {
             <Button
               onClick={handleExtractFromUrl}
               disabled={loading || !url}
-              className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-colors disabled:opacity-50"
+              className="w-full py-3 bg-[#F97066] hover:bg-[#E85A50] text-white font-medium rounded-xl transition-colors disabled:opacity-50"
             >
               {loading ? 'Extracting...' : 'Extract Recipe'}
             </Button>
@@ -250,8 +250,8 @@ export default function AddRecipePage() {
 
   if (method === 'photo' && !title) {
     return (
-      <div className="flex flex-col h-screen bg-zinc-50">
-        <header className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 flex items-center gap-3 shadow-sm">
+      <div className="flex flex-col h-screen bg-[#FFFBF7]">
+        <header className="gradient-warm text-white px-6 py-4 flex items-center gap-3 shadow-lg">
           <button onClick={() => setMethod(null)} className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
             <ArrowLeftIcon className="w-5 h-5" />
           </button>
@@ -261,12 +261,12 @@ export default function AddRecipePage() {
         <main className="flex-1 p-6">
           <div className="space-y-4 max-w-md">
             <label className="block cursor-pointer">
-              <div className="w-full p-10 border-2 border-dashed border-zinc-300 rounded-2xl text-center hover:border-emerald-500 hover:bg-emerald-50/50 transition-all">
-                <div className="w-16 h-16 bg-zinc-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                  <CameraIcon className="w-8 h-8 text-zinc-400" />
+              <div className="w-full p-10 border-2 border-dashed border-[#FEC6A1] rounded-2xl text-center hover:border-[#F97066] hover:bg-[#FEE4D6]/50 transition-all">
+                <div className="w-16 h-16 bg-[#FEE4D6] rounded-2xl flex items-center justify-center mx-auto mb-3">
+                  <CameraIcon className="w-8 h-8 text-[#F97066]" />
                 </div>
-                <p className="text-zinc-700 font-medium">Tap to take or upload a photo</p>
-                <p className="text-zinc-500 text-sm mt-1">Supports JPG, PNG, HEIC</p>
+                <p className="text-[#2D2A26] font-medium">Tap to take or upload a photo</p>
+                <p className="text-[#8B8680] text-sm mt-1">Supports JPG, PNG, HEIC</p>
               </div>
               <input
                 type="file"
@@ -279,8 +279,8 @@ export default function AddRecipePage() {
 
             {loading && (
               <div className="flex flex-col items-center justify-center py-6">
-                <div className="animate-spin rounded-full h-10 w-10 border-3 border-emerald-600 border-t-transparent" />
-                <p className="text-zinc-600 text-sm mt-3">Extracting recipe...</p>
+                <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#F97066] border-t-transparent" />
+                <p className="text-[#4A4640] text-sm mt-3">Extracting recipe...</p>
               </div>
             )}
 
@@ -296,8 +296,8 @@ export default function AddRecipePage() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-zinc-50">
-      <header className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 flex items-center gap-3 shadow-sm">
+    <div className="flex flex-col h-screen bg-[#FFFBF7]">
+      <header className="gradient-warm text-white px-6 py-4 flex items-center gap-3 shadow-lg">
         <button onClick={() => setMethod(null)} className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
           <ArrowLeftIcon className="w-5 h-5" />
         </button>
@@ -309,19 +309,19 @@ export default function AddRecipePage() {
       <main className="flex-1 overflow-auto p-6">
         <div className="space-y-5 max-w-lg">
           <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-2">
+            <label className="block text-sm font-medium text-[#4A4640] mb-2">
               Recipe Name
             </label>
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Grandma's Lasagna"
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-zinc-900 placeholder:text-zinc-400"
+              className="w-full px-4 py-3 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26] placeholder:text-[#8B8680]"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-2">
+            <label className="block text-sm font-medium text-[#4A4640] mb-2">
               Ingredients
             </label>
             <div className="space-y-2">
@@ -331,24 +331,24 @@ export default function AddRecipePage() {
                     placeholder="Ingredient name"
                     value={ing.name}
                     onChange={(e) => updateIngredient(index, 'name', e.target.value)}
-                    className="flex-1 px-3 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-zinc-900 placeholder:text-zinc-400 text-sm"
+                    className="flex-1 px-3 py-2.5 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26] placeholder:text-[#8B8680] text-sm"
                   />
                   <Input
                     placeholder="Qty"
                     type="number"
                     value={ing.quantity || ''}
                     onChange={(e) => updateIngredient(index, 'quantity', e.target.value ? Number(e.target.value) : null)}
-                    className="w-16 px-3 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-zinc-900 placeholder:text-zinc-400 text-sm text-center"
+                    className="w-16 px-3 py-2.5 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26] placeholder:text-[#8B8680] text-sm text-center"
                   />
                   <Input
                     placeholder="Unit"
                     value={ing.unit || ''}
                     onChange={(e) => updateIngredient(index, 'unit', e.target.value || null)}
-                    className="w-20 px-3 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-zinc-900 placeholder:text-zinc-400 text-sm"
+                    className="w-20 px-3 py-2.5 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26] placeholder:text-[#8B8680] text-sm"
                   />
                   <button
                     onClick={() => removeIngredient(index)}
-                    className="p-2 text-zinc-400 hover:text-red-500 transition-colors"
+                    className="p-2 text-[#FEC6A1] hover:text-red-500 transition-colors"
                   >
                     <TrashIcon className="w-5 h-5" />
                   </button>
@@ -356,7 +356,7 @@ export default function AddRecipePage() {
               ))}
               <button
                 onClick={addIngredient}
-                className="flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 text-sm font-medium mt-2"
+                className="flex items-center gap-1.5 text-[#F97066] hover:text-[#E85A50] text-sm font-medium mt-2"
               >
                 <PlusIcon className="w-4 h-4" />
                 Add ingredient
@@ -365,14 +365,14 @@ export default function AddRecipePage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-zinc-700 mb-2">
+            <label className="block text-sm font-medium text-[#4A4640] mb-2">
               Instructions (optional)
             </label>
             <textarea
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
               placeholder="How to make this recipe..."
-              className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent min-h-[120px] text-zinc-900 placeholder:text-zinc-400"
+              className="w-full px-4 py-3 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] min-h-[120px] text-[#2D2A26] placeholder:text-[#8B8680]"
             />
           </div>
 
@@ -385,7 +385,7 @@ export default function AddRecipePage() {
           <Button
             onClick={handleSave}
             disabled={loading}
-            className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-colors disabled:opacity-50"
+            className="w-full py-3 bg-[#F97066] hover:bg-[#E85A50] text-white font-medium rounded-xl transition-colors disabled:opacity-50"
           >
             {loading ? 'Saving...' : 'Save Recipe'}
           </Button>

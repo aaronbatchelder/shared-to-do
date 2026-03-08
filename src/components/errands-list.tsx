@@ -18,7 +18,7 @@ export function ErrandsList({ weekId, userNames }: ErrandsListProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-8">
-        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-600" />
+        <div className="animate-spin rounded-full h-6 w-6 border-2 border-[#F97066] border-t-transparent" />
       </div>
     )
   }
@@ -39,7 +39,7 @@ export function ErrandsList({ weekId, userNames }: ErrandsListProps) {
 
       {checkedErrands.length > 0 && (
         <>
-          <div className="text-sm text-gray-500 pt-4">
+          <div className="text-xs font-medium text-[#8B8680] uppercase tracking-wide pt-6 pb-2">
             Completed ({checkedErrands.length})
           </div>
           {checkedErrands.map((errand) => (
@@ -55,7 +55,7 @@ export function ErrandsList({ weekId, userNames }: ErrandsListProps) {
       )}
 
       {errands.length === 0 && (
-        <p className="text-center text-gray-500 py-4">
+        <p className="text-center text-[#8B8680] py-4">
           No errands yet. Add your first errand above.
         </p>
       )}

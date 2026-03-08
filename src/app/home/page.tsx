@@ -86,9 +86,10 @@ export default function HomePage() {
   }, [weekStart, user])
 
   return (
-    <div className="flex flex-col h-screen bg-zinc-50">
-      <header className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 shadow-sm">
-        <h1 className="text-xl font-semibold tracking-tight">Sunday Runs</h1>
+    <div className="flex flex-col h-screen bg-[#FFFBF7]">
+      <header className="gradient-warm text-white px-6 py-5 shadow-lg">
+        <h1 className="text-2xl font-bold tracking-tight">Sunday Run</h1>
+        <p className="text-white/80 text-sm mt-0.5">Your weekly grocery ritual</p>
       </header>
 
       <WeekNav
@@ -101,12 +102,12 @@ export default function HomePage() {
       <main className="flex-1 overflow-auto px-4 py-6 sm:px-6">
         {loading ? (
           <div className="flex items-center justify-center h-full">
-            <div className="animate-spin rounded-full h-8 w-8 border-2 border-emerald-600 border-t-transparent" />
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#F97066] border-t-transparent" />
           </div>
         ) : (
           <div className="space-y-8 max-w-2xl mx-auto">
             <section>
-              <h2 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-3">Recipes This Week</h2>
+              <h2 className="text-sm font-semibold text-[#8B8680] uppercase tracking-wide mb-3">Recipes This Week</h2>
               <WeekRecipes
                 recipes={weekRecipes}
                 allRecipes={allRecipes}
@@ -116,12 +117,12 @@ export default function HomePage() {
             </section>
 
             <section>
-              <h2 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-3">Grocery List</h2>
+              <h2 className="text-sm font-semibold text-[#8B8680] uppercase tracking-wide mb-3">Grocery List</h2>
               <GroceryList weekId={weekId} userNames={userNames} />
             </section>
 
             <section>
-              <h2 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-3">Errands</h2>
+              <h2 className="text-sm font-semibold text-[#8B8680] uppercase tracking-wide mb-3">Errands</h2>
               <ErrandsList weekId={weekId} userNames={userNames} />
             </section>
           </div>

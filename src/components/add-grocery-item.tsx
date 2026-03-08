@@ -34,22 +34,22 @@ export function AddGroceryItem({ onAdd }: AddGroceryItemProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full p-3 border border-dashed border-zinc-200 rounded-xl text-zinc-400 hover:border-emerald-400 hover:text-emerald-600 hover:bg-emerald-50/50 transition-all flex items-center justify-center gap-2"
+        className="w-full p-3 border border-dashed border-[#FEC6A1] rounded-xl text-[#8B8680] hover:border-[#F97066] hover:text-[#F97066] hover:bg-[#FEE4D6]/50 transition-all flex items-center justify-center gap-2"
       >
         <PlusIcon className="w-4 h-4" />
-        <span className="text-sm">Add item</span>
+        <span className="text-sm font-medium">Add item</span>
       </button>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-zinc-200 rounded-xl p-4 space-y-4 shadow-sm">
+    <form onSubmit={handleSubmit} className="bg-white border border-[#FEE4D6] rounded-xl p-4 space-y-4 shadow-sm">
       <Input
         autoFocus
         placeholder="What do you need?"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="border-zinc-200 focus:border-emerald-500 rounded-lg"
+        className="border-[#FEE4D6] focus:border-[#F97066] rounded-lg text-[#2D2A26] placeholder:text-[#8B8680]"
       />
 
       <div className="flex flex-wrap gap-2">
@@ -59,10 +59,10 @@ export function AddGroceryItem({ onAdd }: AddGroceryItemProps) {
             type="button"
             onClick={() => setStore(store === s ? '' : s)}
             className={cn(
-              'px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
+              'px-3 py-1.5 rounded-full text-xs font-medium transition-all',
               store === s
-                ? 'bg-emerald-500 text-white shadow-sm'
-                : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
+                ? 'bg-[#F97066] text-white shadow-sm'
+                : 'bg-[#FEE4D6] text-[#4A4640] hover:bg-[#FEC6A1]'
             )}
           >
             {s}
@@ -71,13 +71,13 @@ export function AddGroceryItem({ onAdd }: AddGroceryItemProps) {
       </div>
 
       <div className="flex gap-2 pt-1">
-        <Button type="submit" disabled={loading || !name.trim()} className="rounded-lg">
+        <Button type="submit" disabled={loading || !name.trim()} className="rounded-lg bg-[#F97066] hover:bg-[#E85A50] text-white">
           {loading ? 'Adding...' : 'Add'}
         </Button>
         <Button
           type="button"
           variant="ghost"
-          className="text-zinc-500"
+          className="text-[#8B8680] hover:text-[#4A4640]"
           onClick={() => {
             setIsOpen(false)
             setName('')

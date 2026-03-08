@@ -28,7 +28,7 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-8">
-        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-600" />
+        <div className="animate-spin rounded-full h-6 w-6 border-2 border-[#F97066] border-t-transparent" />
       </div>
     )
   }
@@ -40,10 +40,10 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
           <button
             key={store}
             onClick={() => setStoreFilter(store)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+            className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
               storeFilter === store
-                ? 'bg-zinc-900 text-white shadow-sm'
-                : 'bg-white text-zinc-600 hover:bg-zinc-100 border border-zinc-200'
+                ? 'bg-[#F97066] text-white shadow-sm'
+                : 'bg-white text-[#4A4640] hover:bg-[#FEE4D6] border border-[#FEE4D6]'
             }`}
           >
             {store}
@@ -66,7 +66,7 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
 
         {checkedItems.length > 0 && (
           <>
-            <div className="text-xs font-medium text-zinc-400 uppercase tracking-wide pt-6 pb-2">
+            <div className="text-xs font-medium text-[#8B8680] uppercase tracking-wide pt-6 pb-2">
               Completed ({checkedItems.length})
             </div>
             {checkedItems.map((item) => (
@@ -83,7 +83,7 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
       </div>
 
       {items.length === 0 && (
-        <p className="text-center text-zinc-400 py-6 text-sm">
+        <p className="text-center text-[#8B8680] py-6 text-sm">
           No items yet
         </p>
       )}

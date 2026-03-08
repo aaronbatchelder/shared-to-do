@@ -9,14 +9,17 @@ function SignUpContent() {
   const inviteCode = searchParams.get('invite')
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#FFFBF7] px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-emerald-600">Sunday Runs</h1>
-          <p className="text-zinc-600 mt-2">Plan your weekly grocery runs together</p>
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full gradient-warm mb-4">
+            <span className="text-2xl">🌅</span>
+          </div>
+          <h1 className="text-3xl font-bold text-[#F97066]">Sunday Run</h1>
+          <p className="text-[#8B8680] mt-2">Your weekly grocery ritual</p>
           {inviteCode && (
-            <div className="mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
-              <p className="text-sm text-emerald-700">
+            <div className="mt-4 p-3 bg-[#FEE4D6] border border-[#FEC6A1] rounded-xl">
+              <p className="text-sm text-[#E85A50] font-medium">
                 You&apos;ve been invited to join a household!
               </p>
             </div>
@@ -27,10 +30,11 @@ function SignUpContent() {
           appearance={{
             elements: {
               rootBox: "mx-auto",
-              card: "shadow-lg rounded-2xl",
-              headerTitle: "text-xl font-semibold",
-              primaryButton: "bg-emerald-600 hover:bg-emerald-700",
-              formButtonPrimary: "bg-emerald-600 hover:bg-emerald-700",
+              card: "shadow-xl rounded-2xl border border-[#FEE4D6]",
+              headerTitle: "text-xl font-semibold text-[#2D2A26]",
+              primaryButton: "bg-[#F97066] hover:bg-[#E85A50]",
+              formButtonPrimary: "bg-[#F97066] hover:bg-[#E85A50]",
+              footerActionLink: "text-[#F97066] hover:text-[#E85A50]",
             }
           }}
         />
@@ -42,8 +46,8 @@ function SignUpContent() {
 export default function SignUpPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-zinc-50">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-emerald-600 border-t-transparent" />
+      <div className="min-h-screen flex items-center justify-center bg-[#FFFBF7]">
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#F97066] border-t-transparent" />
       </div>
     }>
       <SignUpContent />

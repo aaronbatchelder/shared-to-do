@@ -67,27 +67,30 @@ export default function OnboardingPage() {
     : 'My Household'
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#FFFBF7] px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-emerald-600">Welcome to Sunday Runs!</h1>
-          <p className="text-zinc-600 mt-2">Let's set up your household</p>
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full gradient-warm mb-4">
+            <span className="text-3xl">🏠</span>
+          </div>
+          <h1 className="text-3xl font-bold text-[#2D2A26]">Welcome to Sunday Run!</h1>
+          <p className="text-[#8B8680] mt-2">Let&apos;s set up your household</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-zinc-100 p-6 shadow-sm">
-          <div className="space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[#FEE4D6] p-6 shadow-lg">
+          <div className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-2">
+              <label className="block text-sm font-semibold text-[#4A4640] mb-2">
                 Name your household
               </label>
               <Input
                 value={householdName}
                 onChange={(e) => setHouseholdName(e.target.value)}
                 placeholder={suggestedName}
-                className="w-full px-4 py-3 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-zinc-900"
+                className="w-full px-4 py-3 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26] placeholder:text-[#8B8680]"
                 autoFocus
               />
-              <p className="text-xs text-zinc-500 mt-2">
+              <p className="text-xs text-[#8B8680] mt-2">
                 This is what you and your household members will see
               </p>
             </div>
@@ -101,7 +104,7 @@ export default function OnboardingPage() {
             <Button
               type="submit"
               disabled={loading || !householdName.trim()}
-              className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-xl transition-colors disabled:opacity-50"
+              className="w-full py-3 bg-[#F97066] hover:bg-[#E85A50] text-white font-semibold rounded-xl transition-colors disabled:opacity-50"
             >
               {loading ? 'Creating...' : 'Get Started'}
             </Button>

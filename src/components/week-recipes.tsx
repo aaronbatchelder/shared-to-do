@@ -25,12 +25,12 @@ export function WeekRecipes({ recipes, onAddRecipe, onRemoveRecipe, allRecipes }
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-full"
+            className="flex items-center gap-2 bg-[#FEE4D6] text-[#E85A50] px-3 py-1.5 rounded-full"
           >
             <span className="text-sm font-medium">{recipe.title}</span>
             <button
               onClick={() => onRemoveRecipe(recipe.id)}
-              className="hover:text-emerald-900"
+              className="hover:text-[#F97066]"
             >
               <XMarkIcon className="w-4 h-4" />
             </button>
@@ -39,7 +39,7 @@ export function WeekRecipes({ recipes, onAddRecipe, onRemoveRecipe, allRecipes }
 
         <button
           onClick={() => setShowModal(true)}
-          className="flex items-center gap-1 px-3 py-1.5 border-2 border-dashed border-gray-300 text-gray-500 rounded-full hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+          className="flex items-center gap-1 px-3 py-1.5 border border-dashed border-[#FEC6A1] text-[#8B8680] rounded-full hover:border-[#F97066] hover:text-[#F97066] transition-colors"
         >
           <PlusIcon className="w-4 h-4" />
           <span className="text-sm">Add Recipe</span>

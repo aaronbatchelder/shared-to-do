@@ -31,36 +31,39 @@ export function AddErrand({ onAdd }: AddErrandProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full p-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-emerald-500 hover:text-emerald-600 transition-colors flex items-center justify-center gap-2"
+        className="w-full p-3 border border-dashed border-[#FEC6A1] rounded-xl text-[#8B8680] hover:border-[#F97066] hover:text-[#F97066] hover:bg-[#FEE4D6]/50 transition-all flex items-center justify-center gap-2"
       >
-        <PlusIcon className="w-5 h-5" />
-        Add errand
+        <PlusIcon className="w-4 h-4" />
+        <span className="text-sm font-medium">Add errand</span>
       </button>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border rounded-lg p-4 space-y-3">
+    <form onSubmit={handleSubmit} className="bg-white border border-[#FEE4D6] rounded-xl p-4 space-y-4 shadow-sm">
       <Input
         autoFocus
-        placeholder="Errand description"
+        placeholder="What needs to be done?"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        className="border-[#FEE4D6] focus:border-[#F97066] rounded-lg text-[#2D2A26] placeholder:text-[#8B8680]"
       />
 
       <Input
         placeholder="Location (optional)"
         value={store}
         onChange={(e) => setStore(e.target.value)}
+        className="border-[#FEE4D6] focus:border-[#F97066] rounded-lg text-[#2D2A26] placeholder:text-[#8B8680]"
       />
 
-      <div className="flex gap-2">
-        <Button type="submit" disabled={loading || !title.trim()}>
+      <div className="flex gap-2 pt-1">
+        <Button type="submit" disabled={loading || !title.trim()} className="rounded-lg bg-[#F97066] hover:bg-[#E85A50] text-white">
           {loading ? 'Adding...' : 'Add'}
         </Button>
         <Button
           type="button"
           variant="ghost"
+          className="text-[#8B8680] hover:text-[#4A4640]"
           onClick={() => {
             setIsOpen(false)
             setTitle('')
