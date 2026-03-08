@@ -6,9 +6,9 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { width: 140, height: 32, padding: 'px-4 py-2' },
-  md: { width: 180, height: 40, padding: 'px-5 py-2.5' },
-  lg: { width: 240, height: 54, padding: 'px-6 py-3' },
+  sm: { width: 140, height: 44, padding: 'px-4 py-1.5' },
+  md: { width: 180, height: 56, padding: 'px-5 py-2' },
+  lg: { width: 240, height: 75, padding: 'px-6 py-2.5' },
 }
 
 export function Logo({ size = 'md', className = '' }: LogoProps) {
