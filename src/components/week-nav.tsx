@@ -27,12 +27,16 @@ export function WeekNav({ weekStart, onPrevWeek, onNextWeek, onToday }: WeekNavP
         <span className="font-semibold text-base text-[#2D2A26]">
           {formatWeekRange(weekStart)}
         </span>
-        {!isCurrent && (
+        {isCurrent ? (
+          <span className="text-xs text-[#9CB686] font-medium px-2 py-1 bg-[#9CB686]/10 rounded-md">
+            This Week
+          </span>
+        ) : (
           <button
             onClick={onToday}
             className="text-xs text-[#F97066] hover:text-[#E85A50] font-semibold px-2 py-1 bg-[#FEE4D6] rounded-md"
           >
-            Today
+            Go to Today
           </button>
         )}
       </div>

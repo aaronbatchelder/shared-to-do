@@ -1,7 +1,7 @@
 'use client'
 
 import { Recipe } from '@/lib/supabase/types'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, PlusIcon, BookOpenIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
 interface AddRecipeToWeekModalProps {
@@ -22,31 +22,50 @@ export function AddRecipeToWeekModal({ recipes, onSelect, onClose }: AddRecipeTo
         </div>
 
         <div className="overflow-auto max-h-[60vh] p-4">
-          {recipes.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-[#8B8680] mb-4">No recipes in your library yet.</p>
-              <Link
-                href="/home/recipes/add"
-                className="text-[#F97066] hover:text-[#E85A50] font-medium"
-              >
-                Add your first recipe
-              </Link>
+          {/* Add New Recipe Option */}
+          <Link
+            href="/home/recipes/add"
+            className="flex items-center gap-3 p-4 mb-4 bg-[#F97066] hover:bg-[#E85A50] text-white rounded-xl transition-colors"
+          >
+            <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+              <PlusIcon className="w-5 h-5" />
             </div>
-          ) : (
-            <div className="space-y-2">
-              {recipes.map((recipe) => (
-                <button
-                  key={recipe.id}
-                  onClick={() => onSelect(recipe.id)}
-                  className="w-full p-3 bg-white border border-[#FEE4D6] hover:bg-[#FEE4D6]/50 hover:border-[#F97066] rounded-xl text-left transition-colors"
-                >
-                  <p className="font-medium text-[#2D2A26]">{recipe.title}</p>
-                  <p className="text-sm text-[#8B8680]">
-                    {recipe.ingredients.length} ingredients
-                  </p>
-                </button>
-              ))}
+            <div>
+              <p className="font-medium">Add New Recipe</p>
+              <p className="text-sm text-white/80">From URL, photo, or manual entry</p>
             </div>
+          </Link>
+
+          {/* Library Section */}
+          {recipes.length > 0 && (
+            <>
+              <div className="flex items-center gap-2 mb-3">
+                <BookOpenIcon className="w-4 h-4 text-[#8B8680]" />
+                <span className="text-sm font-medium text-[#8B8680] uppercase tracking-wide">
+                  From Your Library
+                </span>
+              </div>
+              <div className="space-y-2">
+                {recipes.map((recipe) => (
+                  <button
+                    key={recipe.id}
+                    onClick={() => onSelect(recipe.id)}
+                    className="w-full p-3 bg-white border border-[#FEE4D6] hover:bg-[#FEE4D6]/50 hover:border-[#F97066] rounded-xl text-left transition-colors"
+                  >
+                    <p className="font-medium text-[#2D2A26]">{recipe.title}</p>
+                    <p className="text-sm text-[#8B8680]">
+                      {recipe.ingredients.length} ingredient{recipe.ingredients.length !== 1 ? 's' : ''}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+
+          {recipes.length === 0 && (
+            <p className="text-center text-[#8B8680] text-sm py-2">
+              Your recipe library is empty. Add your first recipe above!
+            </p>
           )}
         </div>
       </div>
