@@ -6,6 +6,7 @@ import { WeekNav } from '@/components/week-nav'
 import { GroceryList } from '@/components/grocery-list'
 import { ErrandsList } from '@/components/errands-list'
 import { WeekRecipes } from '@/components/week-recipes'
+import { Logo } from '@/components/logo'
 import { getWeekStart, getNextWeek, getPrevWeek, formatDateForDb } from '@/lib/utils/date'
 import { createClient } from '@/lib/supabase/client'
 import { useWeekRecipes } from '@/hooks/use-week-recipes'
@@ -87,10 +88,10 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col h-screen bg-[#FFFBF7]">
-      <header className="gradient-warm text-white px-6 py-5 shadow-lg">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl font-bold tracking-tight">Sunday Run</h1>
-          <p className="text-white/80 text-sm mt-0.5">Your weekly grocery ritual</p>
+      <header className="gradient-warm text-white px-6 py-4 shadow-lg">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <Logo size="sm" />
+          <p className="text-white/80 text-sm hidden sm:block">Your weekly grocery ritual</p>
         </div>
       </header>
 
