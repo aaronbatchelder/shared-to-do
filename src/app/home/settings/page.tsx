@@ -120,11 +120,13 @@ export default function SettingsPage() {
   if (loading) {
     return (
       <div className="flex flex-col h-screen bg-[#FFFBF7]">
-        <header className="gradient-warm text-white px-6 py-4 flex items-center gap-3 shadow-lg">
-          <Link href="/home" className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
-            <ArrowLeftIcon className="w-5 h-5" />
-          </Link>
-          <h1 className="text-lg font-semibold">Settings</h1>
+        <header className="gradient-warm text-white px-6 py-4 shadow-lg">
+          <div className="max-w-6xl mx-auto flex items-center gap-3">
+            <Link href="/home" className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
+              <ArrowLeftIcon className="w-5 h-5" />
+            </Link>
+            <h1 className="text-lg font-semibold">Settings</h1>
+          </div>
         </header>
         <main className="flex-1 flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#F97066] border-t-transparent" />
@@ -135,135 +137,139 @@ export default function SettingsPage() {
 
   return (
     <div className="flex flex-col h-screen bg-[#FFFBF7]">
-      <header className="gradient-warm text-white px-6 py-4 flex items-center gap-3 shadow-lg">
-        <Link href="/home" className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
-          <ArrowLeftIcon className="w-5 h-5" />
-        </Link>
-        <h1 className="text-lg font-semibold">Settings</h1>
+      <header className="gradient-warm text-white px-6 py-4 shadow-lg">
+        <div className="max-w-6xl mx-auto flex items-center gap-3">
+          <Link href="/home" className="p-1.5 hover:bg-white/10 rounded-lg transition-colors">
+            <ArrowLeftIcon className="w-5 h-5" />
+          </Link>
+          <h1 className="text-lg font-semibold">Settings</h1>
+        </div>
       </header>
 
       <main className="flex-1 overflow-auto p-6 pb-24">
-        <div className="max-w-lg space-y-6">
-          {/* Household Section */}
-          <section className="bg-white rounded-2xl border border-[#FEE4D6] p-5 shadow-sm">
-            <div className="flex items-center gap-2 mb-4">
-              <UserGroupIcon className="w-5 h-5 text-[#F97066]" />
-              <h2 className="text-base font-semibold text-[#2D2A26]">Household</h2>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-[#4A4640] mb-2">
-                  Household Name
-                </label>
-                <Input
-                  value={householdName}
-                  onChange={(e) => setHouseholdName(e.target.value)}
-                  placeholder="My Household"
-                  className="w-full px-4 py-3 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26]"
-                />
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Household Section */}
+            <section className="bg-white rounded-2xl border border-[#FEE4D6] p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-5">
+                <UserGroupIcon className="w-5 h-5 text-[#F97066]" />
+                <h2 className="text-lg font-semibold text-[#2D2A26]">Household</h2>
               </div>
 
-              {/* Members List */}
-              <div>
-                <label className="block text-sm font-medium text-[#4A4640] mb-2">
-                  Members ({members.length})
-                </label>
-                <div className="space-y-2">
-                  {members.map((member) => (
-                    <div
-                      key={member.id}
-                      className="flex items-center gap-3 p-3 bg-[#FEE4D6]/50 rounded-xl"
-                    >
-                      <div className="w-8 h-8 bg-[#FEC6A1] rounded-full flex items-center justify-center">
-                        <span className="text-[#E85A50] font-medium text-sm">
-                          {(member.display_name || member.email || '?')[0].toUpperCase()}
-                        </span>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-[#2D2A26] truncate">
-                          {member.display_name || 'No name'}
-                        </p>
-                        {member.email && (
-                          <p className="text-xs text-[#8B8680] truncate">{member.email}</p>
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-sm font-medium text-[#4A4640] mb-2">
+                    Household Name
+                  </label>
+                  <Input
+                    value={householdName}
+                    onChange={(e) => setHouseholdName(e.target.value)}
+                    placeholder="My Household"
+                    className="w-full px-4 py-3 rounded-xl border border-[#FEE4D6] focus:outline-none focus:ring-2 focus:ring-[#F97066]/30 focus:border-[#F97066] text-[#2D2A26]"
+                  />
+                </div>
+
+                {/* Members List */}
+                <div>
+                  <label className="block text-sm font-medium text-[#4A4640] mb-2">
+                    Members ({members.length})
+                  </label>
+                  <div className="space-y-2">
+                    {members.map((member) => (
+                      <div
+                        key={member.id}
+                        className="flex items-center gap-3 p-3 bg-[#FEE4D6]/50 rounded-xl"
+                      >
+                        <div className="w-10 h-10 bg-[#FEC6A1] rounded-full flex items-center justify-center">
+                          <span className="text-[#E85A50] font-medium">
+                            {(member.display_name || member.email || '?')[0].toUpperCase()}
+                          </span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-[#2D2A26] truncate">
+                            {member.display_name || 'No name'}
+                          </p>
+                          {member.email && (
+                            <p className="text-sm text-[#8B8680] truncate">{member.email}</p>
+                          )}
+                        </div>
+                        {member.id === user?.id && (
+                          <span className="text-sm text-[#F97066] font-medium">You</span>
                         )}
                       </div>
-                      {member.id === user?.id && (
-                        <span className="text-xs text-[#F97066] font-medium">You</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Invite Section */}
-              <div className="pt-2 border-t border-[#FEE4D6]">
-                <label className="block text-sm font-medium text-[#4A4640] mb-2">
-                  Invite Link
-                </label>
-                {inviteCode ? (
-                  <div className="flex gap-2">
-                    <div className="flex-1 px-4 py-3 bg-[#FEE4D6]/50 rounded-xl text-sm text-[#4A4640] font-mono truncate">
-                      {`${typeof window !== 'undefined' ? window.location.origin : ''}/sign-up?invite=${inviteCode}`}
-                    </div>
-                    <button
-                      onClick={handleCopyInviteLink}
-                      className="p-3 bg-[#FEE4D6] text-[#F97066] rounded-xl hover:bg-[#FEC6A1] transition-colors"
-                    >
-                      {copied ? (
-                        <CheckIcon className="w-5 h-5" />
-                      ) : (
-                        <ClipboardIcon className="w-5 h-5" />
-                      )}
-                    </button>
+                    ))}
                   </div>
-                ) : (
-                  <p className="text-sm text-[#8B8680]">
-                    Save settings to generate an invite link
-                  </p>
-                )}
-              </div>
-
-              <Button
-                onClick={handleSave}
-                disabled={saving}
-                className="w-full py-3 bg-[#F97066] hover:bg-[#E85A50] text-white font-semibold rounded-xl transition-colors disabled:opacity-50"
-              >
-                {saving ? 'Saving...' : 'Save Settings'}
-              </Button>
-            </div>
-          </section>
-
-          {/* Account Section */}
-          <section className="bg-white rounded-2xl border border-[#FEE4D6] p-5 shadow-sm">
-            <h2 className="text-base font-semibold text-[#2D2A26] mb-4">Account</h2>
-
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 p-3 bg-[#FEE4D6]/50 rounded-xl">
-                <div className="w-10 h-10 bg-[#FEC6A1] rounded-full flex items-center justify-center">
-                  <span className="text-[#E85A50] font-semibold">
-                    {user?.firstName?.[0] || user?.emailAddresses[0]?.emailAddress[0]?.toUpperCase() || '?'}
-                  </span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-[#2D2A26]">
-                    {user?.firstName} {user?.lastName}
-                  </p>
-                  <p className="text-xs text-[#8B8680] truncate">
-                    {user?.emailAddresses[0]?.emailAddress}
-                  </p>
-                </div>
-              </div>
 
-              <button
-                onClick={handleSignOut}
-                className="w-full flex items-center justify-center gap-2 p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors"
-              >
-                <ArrowRightOnRectangleIcon className="w-5 h-5" />
-                <span className="font-medium">Sign Out</span>
-              </button>
-            </div>
-          </section>
+                {/* Invite Section */}
+                <div className="pt-4 border-t border-[#FEE4D6]">
+                  <label className="block text-sm font-medium text-[#4A4640] mb-2">
+                    Invite Link
+                  </label>
+                  {inviteCode ? (
+                    <div className="flex gap-2">
+                      <div className="flex-1 px-4 py-3 bg-[#FEE4D6]/50 rounded-xl text-sm text-[#4A4640] font-mono truncate">
+                        {`${typeof window !== 'undefined' ? window.location.origin : ''}/sign-up?invite=${inviteCode}`}
+                      </div>
+                      <button
+                        onClick={handleCopyInviteLink}
+                        className="p-3 bg-[#FEE4D6] text-[#F97066] rounded-xl hover:bg-[#FEC6A1] transition-colors"
+                      >
+                        {copied ? (
+                          <CheckIcon className="w-5 h-5" />
+                        ) : (
+                          <ClipboardIcon className="w-5 h-5" />
+                        )}
+                      </button>
+                    </div>
+                  ) : (
+                    <p className="text-sm text-[#8B8680]">
+                      Save settings to generate an invite link
+                    </p>
+                  )}
+                </div>
+
+                <Button
+                  onClick={handleSave}
+                  disabled={saving}
+                  className="w-full py-3 bg-[#F97066] hover:bg-[#E85A50] text-white font-semibold rounded-xl transition-colors disabled:opacity-50"
+                >
+                  {saving ? 'Saving...' : 'Save Settings'}
+                </Button>
+              </div>
+            </section>
+
+            {/* Account Section */}
+            <section className="bg-white rounded-2xl border border-[#FEE4D6] p-6 shadow-sm h-fit">
+              <h2 className="text-lg font-semibold text-[#2D2A26] mb-5">Account</h2>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 p-4 bg-[#FEE4D6]/50 rounded-xl">
+                  <div className="w-12 h-12 bg-[#FEC6A1] rounded-full flex items-center justify-center">
+                    <span className="text-[#E85A50] font-semibold text-lg">
+                      {user?.firstName?.[0] || user?.emailAddresses[0]?.emailAddress[0]?.toUpperCase() || '?'}
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-[#2D2A26]">
+                      {user?.firstName} {user?.lastName}
+                    </p>
+                    <p className="text-sm text-[#8B8680] truncate">
+                      {user?.emailAddresses[0]?.emailAddress}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleSignOut}
+                  className="w-full flex items-center justify-center gap-2 p-3 text-red-500 hover:bg-red-50 rounded-xl transition-colors"
+                >
+                  <ArrowRightOnRectangleIcon className="w-5 h-5" />
+                  <span className="font-medium">Sign Out</span>
+                </button>
+              </div>
+            </section>
+          </div>
         </div>
       </main>
     </div>
