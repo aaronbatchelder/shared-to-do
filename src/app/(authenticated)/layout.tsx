@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { BottomNav } from '@/components/bottom-nav'
 
 export default async function AuthenticatedLayout({
   children,
@@ -14,8 +15,9 @@ export default async function AuthenticatedLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pb-20">
       {children}
+      <BottomNav />
     </div>
   )
 }
