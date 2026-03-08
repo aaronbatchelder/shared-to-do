@@ -77,14 +77,12 @@ export function useGroceryItems(weekId: string | null) {
     })
   }
 
-  const toggleItem = async (itemId: string, checked: boolean) => {
-    const { data: user } = await supabase.auth.getUser()
-
+  const toggleItem = async (itemId: string, checked: boolean, userId?: string) => {
     await supabase
       .from('grocery_items')
       .update({
         checked,
-        checked_by_user_id: checked ? user.user?.id : null,
+        checked_by_user_id: checked ? userId : null,
         checked_at: checked ? new Date().toISOString() : null,
       })
       .eq('id', itemId)

@@ -1,22 +1,23 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
+import { useUser } from '@clerk/nextjs'
 import { createClient } from '@/lib/supabase/client'
 import { Recipe } from '@/lib/supabase/types'
 
 export function useRecipes() {
+  const { user } = useUser()
   const [recipes, setRecipes] = useState<Recipe[]>([])
   const [loading, setLoading] = useState(true)
   const supabase = createClient()
 
   const fetchRecipes = useCallback(async () => {
-    const { data: user } = await supabase.auth.getUser()
-    if (!user.user) return
+    if (!user) return
 
     const { data: userData } = await supabase
       .from('users')
       .select('household_id')
-      .eq('id', user.user.id)
+      .eq('id', user.id)
       .single()
 
     if (!userData?.household_id) return
@@ -31,7 +32,7 @@ export function useRecipes() {
       setRecipes(data)
     }
     setLoading(false)
-  }, [supabase])
+  }, [supabase, user])
 
   useEffect(() => {
     fetchRecipes()

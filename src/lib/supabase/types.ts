@@ -12,23 +12,26 @@ export interface Ingredient {
   unit: string | null
 }
 
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       households: {
         Row: {
           id: string
           name: string
+          invite_code: string | null
           created_at: string
         }
         Insert: {
           id?: string
           name: string
+          invite_code?: string | null
           created_at?: string
         }
         Update: {
           id?: string
           name?: string
+          invite_code?: string | null
           created_at?: string
         }
       }
@@ -200,6 +203,18 @@ export interface Database {
           created_at?: string
         }
       }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
     }
   }
 }

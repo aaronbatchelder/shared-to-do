@@ -34,21 +34,22 @@ export function AddGroceryItem({ onAdd }: AddGroceryItemProps) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full p-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-emerald-500 hover:text-emerald-600 transition-colors flex items-center justify-center gap-2"
+        className="w-full p-3 border border-dashed border-zinc-200 rounded-xl text-zinc-400 hover:border-emerald-400 hover:text-emerald-600 hover:bg-emerald-50/50 transition-all flex items-center justify-center gap-2"
       >
-        <PlusIcon className="w-5 h-5" />
-        Add item
+        <PlusIcon className="w-4 h-4" />
+        <span className="text-sm">Add item</span>
       </button>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border rounded-lg p-4 space-y-3">
+    <form onSubmit={handleSubmit} className="bg-white border border-zinc-200 rounded-xl p-4 space-y-4 shadow-sm">
       <Input
         autoFocus
-        placeholder="Item name"
+        placeholder="What do you need?"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        className="border-zinc-200 focus:border-emerald-500 rounded-lg"
       />
 
       <div className="flex flex-wrap gap-2">
@@ -58,10 +59,10 @@ export function AddGroceryItem({ onAdd }: AddGroceryItemProps) {
             type="button"
             onClick={() => setStore(store === s ? '' : s)}
             className={cn(
-              'px-3 py-1 rounded-full text-sm transition-colors',
+              'px-3 py-1.5 rounded-lg text-xs font-medium transition-all',
               store === s
-                ? 'bg-emerald-100 text-emerald-700'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-emerald-500 text-white shadow-sm'
+                : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
             )}
           >
             {s}
@@ -69,13 +70,14 @@ export function AddGroceryItem({ onAdd }: AddGroceryItemProps) {
         ))}
       </div>
 
-      <div className="flex gap-2">
-        <Button type="submit" disabled={loading || !name.trim()}>
+      <div className="flex gap-2 pt-1">
+        <Button type="submit" disabled={loading || !name.trim()} className="rounded-lg">
           {loading ? 'Adding...' : 'Add'}
         </Button>
         <Button
           type="button"
           variant="ghost"
+          className="text-zinc-500"
           onClick={() => {
             setIsOpen(false)
             setName('')

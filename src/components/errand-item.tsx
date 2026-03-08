@@ -1,18 +1,20 @@
 'use client'
 
 import { useState } from 'react'
+import { useUser } from '@clerk/nextjs'
 import { Errand } from '@/lib/supabase/types'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils'
 
 interface ErrandItemProps {
   errand: Errand
-  onToggle: (id: string, checked: boolean) => void
+  onToggle: (id: string, checked: boolean, userId?: string) => void
   onDelete: (id: string) => void
   checkedByName?: string
 }
 
 export function ErrandItem({ errand, onToggle, onDelete, checkedByName }: ErrandItemProps) {
+  const { user } = useUser()
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleDelete = async () => {
@@ -28,7 +30,7 @@ export function ErrandItem({ errand, onToggle, onDelete, checkedByName }: Errand
       )}
     >
       <button
-        onClick={() => onToggle(errand.id, !errand.checked)}
+        onClick={() => onToggle(errand.id, !errand.checked, user?.id)}
         className={cn(
           'w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0',
           errand.checked

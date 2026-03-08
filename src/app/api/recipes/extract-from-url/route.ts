@@ -13,8 +13,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(recipe)
   } catch (error) {
     console.error('Extract from URL error:', error)
+    const message = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'Failed to extract recipe' },
+      { error: `Failed to extract recipe: ${message}` },
       { status: 500 }
     )
   }

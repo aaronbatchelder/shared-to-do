@@ -11,7 +11,7 @@ export default function RecipesPage() {
   return (
     <div className="flex flex-col h-screen">
       <header className="bg-emerald-600 text-white px-4 py-3 flex items-center gap-3">
-        <Link href="/" className="p-1 hover:bg-emerald-700 rounded">
+        <Link href="/home" className="p-1 hover:bg-emerald-700 rounded">
           <ArrowLeftIcon className="w-5 h-5" />
         </Link>
         <h1 className="text-xl font-bold">Recipes</h1>
@@ -25,7 +25,7 @@ export default function RecipesPage() {
         ) : (
           <>
             <Link
-              href="/recipes/add"
+              href="/home/recipes/add"
               className="mb-4 flex items-center justify-center gap-2 w-full p-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
             >
               <PlusIcon className="w-5 h-5" />

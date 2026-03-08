@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useUser } from '@clerk/nextjs'
 import { WeekNav } from '@/components/week-nav'
 import { GroceryList } from '@/components/grocery-list'
 import { ErrandsList } from '@/components/errands-list'
@@ -11,6 +12,7 @@ import { useWeekRecipes } from '@/hooks/use-week-recipes'
 import { useRecipes } from '@/hooks/use-recipes'
 
 export default function HomePage() {
+  const { user } = useUser()
   const [weekStart, setWeekStart] = useState(() => getWeekStart())
   const [weekId, setWeekId] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -25,19 +27,21 @@ export default function HomePage() {
 
   useEffect(() => {
     async function ensureWeek() {
+      if (!user) return
+
       setLoading(true)
       const supabase = createClient()
-      const { data: user } = await supabase.auth.getUser()
-
-      if (!user.user) return
 
       const { data: userData } = await supabase
         .from('users')
         .select('household_id')
-        .eq('id', user.user.id)
+        .eq('id', user.id)
         .single()
 
-      if (!userData?.household_id) return
+      if (!userData || !userData.household_id) {
+        setLoading(false)
+        return
+      }
 
       const startDate = formatDateForDb(weekStart)
 
@@ -79,12 +83,12 @@ export default function HomePage() {
     }
 
     ensureWeek()
-  }, [weekStart])
+  }, [weekStart, user])
 
   return (
-    <div className="flex flex-col h-screen">
-      <header className="bg-emerald-600 text-white px-4 py-3">
-        <h1 className="text-xl font-bold">Sunday Runs</h1>
+    <div className="flex flex-col h-screen bg-zinc-50">
+      <header className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 shadow-sm">
+        <h1 className="text-xl font-semibold tracking-tight">Sunday Runs</h1>
       </header>
 
       <WeekNav
@@ -94,15 +98,15 @@ export default function HomePage() {
         onToday={handleToday}
       />
 
-      <main className="flex-1 overflow-auto p-4">
+      <main className="flex-1 overflow-auto px-4 py-6 sm:px-6">
         {loading ? (
           <div className="flex items-center justify-center h-full">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600" />
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-emerald-600 border-t-transparent" />
           </div>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-8 max-w-2xl mx-auto">
             <section>
-              <h2 className="text-lg font-semibold mb-3">Recipes This Week</h2>
+              <h2 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-3">Recipes This Week</h2>
               <WeekRecipes
                 recipes={weekRecipes}
                 allRecipes={allRecipes}
@@ -112,12 +116,12 @@ export default function HomePage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-semibold mb-3">Grocery List</h2>
+              <h2 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-3">Grocery List</h2>
               <GroceryList weekId={weekId} userNames={userNames} />
             </section>
 
             <section>
-              <h2 className="text-lg font-semibold mb-3">Errands</h2>
+              <h2 className="text-sm font-medium text-zinc-500 uppercase tracking-wide mb-3">Errands</h2>
               <ErrandsList weekId={weekId} userNames={userNames} />
             </section>
           </div>

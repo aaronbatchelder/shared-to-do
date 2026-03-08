@@ -26,7 +26,7 @@ export function AddRecipeToWeekModal({ recipes, onSelect, onClose }: AddRecipeTo
             <div className="text-center py-8">
               <p className="text-gray-500 mb-4">No recipes in your library yet.</p>
               <Link
-                href="/recipes/add"
+                href="/home/recipes/add"
                 className="text-emerald-600 hover:text-emerald-700 font-medium"
               >
                 Add your first recipe

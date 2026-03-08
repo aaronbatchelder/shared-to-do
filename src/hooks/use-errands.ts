@@ -77,14 +77,12 @@ export function useErrands(weekId: string | null) {
     })
   }
 
-  const toggleErrand = async (errandId: string, checked: boolean) => {
-    const { data: user } = await supabase.auth.getUser()
-
+  const toggleErrand = async (errandId: string, checked: boolean, userId?: string) => {
     await supabase
       .from('errands')
       .update({
         checked,
-        checked_by_user_id: checked ? user.user?.id : null,
+        checked_by_user_id: checked ? userId : null,
         checked_at: checked ? new Date().toISOString() : null,
       })
       .eq('id', errandId)

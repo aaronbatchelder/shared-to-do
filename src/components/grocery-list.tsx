@@ -35,15 +35,15 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4">
+      <div className="flex gap-1.5 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
         {STORES.map((store) => (
           <button
             key={store}
             onClick={() => setStoreFilter(store)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
               storeFilter === store
-                ? 'bg-emerald-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-zinc-900 text-white shadow-sm'
+                : 'bg-white text-zinc-600 hover:bg-zinc-100 border border-zinc-200'
             }`}
           >
             {store}
@@ -66,8 +66,8 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
 
         {checkedItems.length > 0 && (
           <>
-            <div className="text-sm text-gray-500 pt-4">
-              Checked ({checkedItems.length})
+            <div className="text-xs font-medium text-zinc-400 uppercase tracking-wide pt-6 pb-2">
+              Completed ({checkedItems.length})
             </div>
             {checkedItems.map((item) => (
               <GroceryItem
@@ -83,8 +83,8 @@ export function GroceryList({ weekId, userNames }: GroceryListProps) {
       </div>
 
       {items.length === 0 && (
-        <p className="text-center text-gray-500 py-4">
-          No items yet. Add your first grocery item above.
+        <p className="text-center text-zinc-400 py-6 text-sm">
+          No items yet
         </p>
       )}
     </div>
