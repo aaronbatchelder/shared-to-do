@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sunday Runs
 
-## Getting Started
+A shared household grocery and errand planning app with realtime sync.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Weekly meal planning with recipe management
+- Grocery list with store filtering
+- Errands tracking
+- Realtime sync between household members
+- "Who checked" indicators for divide-and-conquer shopping
+- Recipe extraction from URLs and photos (AI-powered)
+- Email and phone OTP authentication
+- PWA for iOS installation
+
+## Tech Stack
+
+- **Frontend:** Next.js 14 (App Router), Tailwind CSS
+- **Backend:** Supabase (Postgres, Auth, Realtime)
+- **AI:** Claude API for recipe extraction
+- **Email:** Resend
+- **SMS:** Twilio
+
+## Setup
+
+1. Clone the repo
+2. Copy `.env.local.example` to `.env.local` and fill in values:
+   - Create a Supabase project and get credentials
+   - Set up Resend for email OTP
+   - Set up Twilio for SMS OTP (optional)
+   - Get an Anthropic API key for recipe extraction
+
+3. Run the database migration:
+   - Go to Supabase SQL Editor
+   - Run the contents of `supabase/migrations/001_initial_schema.sql`
+   - Enable Realtime on `grocery_items` and `errands` tables
+
+4. Configure Supabase Auth:
+   - Enable Email OTP provider
+   - Enable Phone OTP provider (if using SMS)
+
+5. Install and run:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+## Deploy
+
+Deploy to Vercel:
+
+1. Connect your repository to Vercel
+2. Add all environment variables from `.env.local.example`
+3. Deploy
+
+## Project Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src/
+├── app/
+│   ├── (authenticated)/     # Protected routes
+│   │   ├── page.tsx         # Weekly view (home)
+│   │   └── recipes/         # Recipe management
+│   ├── admin/               # Admin analytics
+│   ├── api/                 # API routes
+│   └── login/               # Authentication
+├── components/              # React components
+├── hooks/                   # Custom React hooks
+└── lib/                     # Utilities and clients
+```
